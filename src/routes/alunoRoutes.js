@@ -1,8 +1,13 @@
 import { Router } from 'express';
-import homeController from '../controllers/HomeController';
+import studentController from '../controllers/StudentController';
+import loginRequred from '../middlewares/loginRequired';
 
 const router = new Router();
 
-router.get('/', homeController.index);
+router.get('/', studentController.index);
+router.get('/:id', studentController.show);
+router.post('/', loginRequred, studentController.store);
+router.put('/:id', loginRequred, studentController.update);
+router.delete('/:id', loginRequred, studentController.delete);
 
 export default router;
