@@ -30,10 +30,9 @@ export default async (req, res, next) => {
 
     req.userId = id;
     req.userEmail = email;
-    console.log(id, email);
-    next();
+    return next();
   } catch (error) {
-    res.status(401).json({
+    return res.status(401).json({
       errors: ['Invalid token'],
     });
   }
